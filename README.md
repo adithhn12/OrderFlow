@@ -1,250 +1,334 @@
-# AI Manufacturing Assistant 🚀
+# OrderFlow – AI Powered Manufacturing Order Management
 
-An AI-powered conversational manufacturing workflow platform that simplifies order processing, status tracking, and quality management using natural language interactions.
+## Overview
 
-Built for Nova Nexus Hackathon 2025.
+OrderFlow is an AI-powered manufacturing order management platform that allows buyers and operations teams to manage production orders using natural language.
 
----
+Instead of manually filling long forms or updating spreadsheets, users can simply type commands like:
 
-# 📌 Problem Statement
+* “Need 50 stainless steel brackets by next Friday”
+* “Update order ID123 to Accepted”
+* “Add quality note: scratches found on 3 units”
 
-Precision manufacturing companies manage complex order lifecycles involving multiple stakeholders, status updates, and quality checkpoints.
+The AI assistant processes the request and updates the system automatically.
 
-Traditional workflows rely on:
-- Emails
-- Calls
-- Spreadsheets
-- Manual follow-ups
-
-These methods are:
-- Slow
-- Error-prone
-- Difficult to scale
-- Hard to track in real time
-
-The challenge is to build a conversational AI system where users interact entirely through natural language to:
-- Place manufacturing orders
-- Track order progress
-- Log quality updates
-- View operational dashboards
+The platform also provides a live dashboard for tracking orders, statuses, deadlines, and quality notes in real time.
 
 ---
 
-# 💡 Our Solution
+# Problem Statement
 
-AI Manufacturing Assistant replaces traditional operational workflows with a single AI-powered interface.
+Manufacturing companies often rely on:
 
-Users can communicate naturally with the system, while AI extracts structured information and automates manufacturing operations.
+* Manual order entry
+* Spreadsheet-based tracking
+* Email communication
+* Slow status updates
+* Human-dependent workflow handling
 
-Example:
+These processes lead to:
 
-"Need 200 titanium flanges delivered by July 20"
+* Delays in production
+* Miscommunication
+* Data inconsistency
+* Reduced operational efficiency
+* Increased manual workload
 
-The system automatically:
-- Extracts order details
-- Creates an order card
-- Assigns workflow status
-- Stores data in database/dashboard
-
----
-
-# ✨ Core Features
-
-## 🤖 Conversational Order Placement
-
-Users place orders using plain English.
-
-AI extracts:
-- Part name
-- Material
-- Quantity
-- Dimensions
-- Delivery deadline
+Small and medium manufacturing businesses especially struggle with modern workflow automation tools because they are expensive and complex.
 
 ---
 
-## 📊 Smart Status Management
+# Solution
 
-Operations team can update order status conversationally.
+OrderFlow simplifies manufacturing workflow management using AI and natural language processing.
 
-Example:
+Users interact with the system through a chat interface instead of traditional forms.
 
-"Order #42 has been accepted"
+The AI assistant:
 
----
+* Understands manufacturing requests
+* Extracts structured order details
+* Creates and updates orders automatically
+* Tracks quality notes
+* Maintains live workflow status
+* Enables role-based access for buyers and operations teams
 
-## 🛠 Quality Check Logging
-
-Quality inspections and production notes are added through chat.
-
-Example:
-
-"Order #42 passed visual inspection"
-
-All logs are timestamped automatically.
+This reduces manual work and improves operational efficiency.
 
 ---
 
-## 📋 Real-Time Dashboard
+# Key Features
 
-Dashboard displays:
-- All active orders
-- Current workflow stage
-- Latest quality note
-- Order timeline
+## AI Chat-Based Order Creation
 
----
+Users can create orders using simple natural language.
 
-# 🔄 Workflow Pipeline
+### Example:
 
-Received
-↓
-In Review
-↓
-Accepted
-↓
-Production
-↓
-Quality Check
-↓
-Completed
+```text
+Need 50 aluminum housings by June 10
+```
+
+The system automatically extracts:
+
+* Quantity
+* Material
+* Product name
+* Deadline
 
 ---
 
-# 🧠 Token Efficient Architecture
+## Smart Order Updates
 
-Our system is designed to minimize AI token usage and API costs.
+Operations teams can update workflow statuses through AI commands.
 
-## Techniques Used
+### Example:
 
-### ✅ Stateless Extraction
-
-Only current user message is sent to AI instead of full chat history.
-
-### ✅ Minimal Prompt Design
-
-Short extraction prompts reduce token consumption.
-
-### ✅ Rule-Based Parsing
-
-Simple status updates use regex/manual logic instead of AI calls.
-
-### ✅ Structured Local Storage
-
-Once extracted, order data is stored locally/database and reused without reprocessing.
+```text
+Update order 123 to Accepted
+```
 
 ---
 
-# 🏗 System Architecture
+## Quality Note Management
 
-                ┌─────────────────┐
-                │   User Chat UI  │
-                └────────┬────────┘
-                         │
-                         ▼
-              ┌───────────────────┐
-              │ AI NLP Extraction │
-              └────────┬──────────┘
-                       │
-                       ▼
-             ┌────────────────────┐
-             │ Backend Processing │
-             └────────┬───────────┘
-                      │
-        ┌─────────────┴─────────────┐
-        ▼                           ▼
-┌────────────────┐        ┌────────────────┐
-│ Order Database │        │ Dashboard UI   │
-└────────────────┘        └────────────────┘
+Quality inspection notes can be attached directly to orders.
+
+### Example:
+
+```text
+Add quality note: surface scratches found
+```
 
 ---
 
-# ⚙️ Tech Stack
+## Real-Time Dashboard
+
+The dashboard displays:
+
+* Active orders
+* Quantity
+* Material
+* Deadlines
+* Current workflow status
+* Latest quality notes
+
+All updates appear in real time.
+
+---
+
+## Authentication & Role-Based Access
+
+The system supports:
+
+* Buyer accounts
+* Operations accounts
+
+Different roles have different workflow permissions.
+
+---
+
+## Secure Input Handling
+
+User input is sanitized before rendering to prevent unsafe content injection.
+
+---
+
+# Architecture
+
+```text
+Frontend (React + TypeScript)
+        ↓
+AI Chat Interface
+        ↓
+Supabase Edge Functions
+        ↓
+Natural Language Processing Logic
+        ↓
+Supabase Database
+        ↓
+Live Dashboard Updates
+```
+
+---
+
+# Tech Stack
 
 ## Frontend
-- React.js
-- Vite
-- Tailwind CSS
-- TypeScript
 
-## Backend
-- Node.js
-- Express.js
+* React 19
+* TypeScript
+* Vite
+* Tailwind CSS
+* TanStack Router
+* ShadCN UI
+* Radix UI
 
-## Database
-- MongoDB / LocalStorage
+## Backend & Database
 
-## AI / NLP
-- OpenAI API / Gemini API
+* Supabase
+* Supabase Authentication
+* Supabase Realtime Database
+* Supabase Edge Functions
+
+## Additional Libraries
+
+* React Hook Form
+* Zod Validation
+* Sonner Toast Notifications
+* Lucide React Icons
 
 ---
 
-# 📂 Project Structure
+# Why TypeScript Over JavaScript?
 
+TypeScript was chosen because it provides:
+
+## Better Type Safety
+
+Prevents runtime bugs during development.
+
+## Improved Scalability
+
+Makes large projects easier to maintain.
+
+## Better Developer Experience
+
+Provides:
+
+* Autocomplete
+* IntelliSense
+* Strong error checking
+
+## Safer API Handling
+
+Ensures frontend and backend data structures remain consistent.
+
+This is especially important for manufacturing workflows where incorrect data can affect production.
+
+---
+
+# Token Utilization Optimization
+
+OrderFlow improves token efficiency compared to traditional AI systems.
+
+## Structured Prompt Processing
+
+The system extracts only important manufacturing fields instead of sending unnecessary conversation history.
+
+## Minimal Context Transfer
+
+Only relevant order information is processed.
+
+## Focused AI Commands
+
+Commands are short and task-oriented.
+
+## Reduced Redundant AI Calls
+
+Workflow updates are handled efficiently to minimize repeated processing.
+
+This lowers:
+
+* API cost
+* Latency
+* Token usage
+* Processing overhead
+
+---
+
+# Folder Structure
+
+```text
 src/
  ├── components/
- ├── pages/
  ├── hooks/
- ├── services/
- ├── utils/
- ├── types/
- ├── data/
- └── App.tsx
+ ├── integrations/
+ ├── lib/
+ ├── routes/
+ ├── styles.css
+ ├── router.tsx
+ └── start.ts
+```
 
 ---
 
-# 🎯 Objectives
-
-- Simplify manufacturing workflows
-- Reduce manual coordination
-- Improve operational visibility
-- Enable conversational operations
-- Reduce AI operational costs
-- Build scalable manufacturing automation
-
----
-
-# 🚀 Future Enhancements
-
-- Voice-enabled order processing
-- ERP integration
-- Predictive delivery estimation
-- AI-powered production analytics
-- Multi-factory support
-- Supplier recommendation engine
-- Role-based access control
-
----
-
-# 🏆 Innovation Highlights
-
-- Conversational manufacturing operations
-- Token-efficient AI architecture
-- Real-time workflow management
-- AI + dashboard hybrid interface
-- Minimal operational overhead
-
----
-
-# 📸 Demo Flow
-
-## Customer
-Places order using natural language.
-
-## Operations Team
-Updates workflow stages through chat.
-
-## Quality Team
-Logs inspection reports conversationally.
-
-## Management
-Monitors entire production pipeline via dashboard.
-
----
-
-# 🛠 Installation
+# Installation
 
 ## Clone Repository
 
 ```bash
 git clone <repository-url>
+cd orderflow
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+# Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+# Build Production Version
+
+```bash
+npm run build
+```
+
+---
+
+# Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
+
+---
+
+# Future Enhancements
+
+* AI demand forecasting
+* ERP integration
+* Automated production scheduling
+* Voice-based order management
+* Multi-language support
+* Predictive maintenance alerts
+* Supplier analytics dashboard
+* Inventory optimization
+
+---
+
+# Impact
+
+OrderFlow helps manufacturing businesses:
+
+* Reduce manual operations
+* Improve workflow efficiency
+* Minimize communication delays
+* Track production more effectively
+* Automate repetitive processes
+* Improve operational transparency
+
+---
+
+# Team
+
+Built for hackathon innovation in AI-powered manufacturing workflow automation.
+
+---
+
+# License
+
+This project is intended for educational and hackathon purposes.
